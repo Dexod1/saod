@@ -58,7 +58,9 @@ public:
 		for (int i = 0; i < strlen(newText)+1; i++)
 			newText[i] = i < strlen(m_pszText) ? m_pszText[i] : sz[i - strlen(m_pszText)];
 
-		return Str(newText);
+		Str result(newText);
+		delete[] newText;
+		return result;
 	}
 
 	operator const char* ()const { return m_pszText; }
